@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "/usr/bin/python3",
+    "files.watcherExclude": {
+        "**/node_modules/**": false,
+        "**/node_modules/*/**": true
+    }
+}
