@@ -43,7 +43,7 @@ urlpatterns = [
     path('contact/', views.contact_page),
     path('login/', views.login_page),
     path('register/', views.register_page),
-    path('products/', include('products.urls')),
+    path('products/', include(('products.urls', 'products'), namespace='products')),
 
     # path('featured/', ProductFeaturedListView.as_view()),
     # path('featured/<int:pk>/', ProductFeaturedDetailView.as_view()),

@@ -1,6 +1,7 @@
 import random
 import os
 from django.db import models
+from django.urls import reverse
 from django.db.models.signals import pre_save, post_save
 from .utils import unique_slug_generator
 
@@ -57,7 +58,8 @@ class Product(models.Model):
     objects = ProductManager()
 
     def get_absolute_url(self):
-        return f"/products/{self.slug}/"
+        return reverse('products:detail', kwargs={'slug': self.slug})
+        #return f"/products/{self.slug}/" # hardcoded url
     
 
     def __str__(self):
