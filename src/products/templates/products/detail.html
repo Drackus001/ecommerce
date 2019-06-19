@@ -1,9 +1,11 @@
 
-{{ object.title }}
-<br>
+<h2>Title: {{ object.title }} </h2>
 
-{{ object.description }}
-
+<hr>
 {% if object.image %}
     <img src="{{ object.image.url }}" alt="error while displaying an image.">
 {% endif %}
+
+<p> Description: {{ object.description }} </p>
+
+ 
