@@ -38,11 +38,11 @@ from .views import (
         register_page)
 
 urlpatterns = [
-    path('', views.home_page),
-    path('about/', views.about_page),
-    path('contact/', views.contact_page),
-    path('login/', views.login_page),
-    path('register/', views.register_page),
+    path('', views.home_page, name='home'),
+    path('about/', views.about_page, name='about'),
+    path('contact/', views.contact_page, name='contact'),
+    path('login/', views.login_page, name='login'),
+    path('register/', views.register_page, name='register'),
     path('products/', include(('products.urls', 'products'), namespace='products')),
 
     # path('featured/', ProductFeaturedListView.as_view()),
