@@ -1,11 +1,20 @@
-
-<h2>Title: {{ object.title }} </h2>
-
-<hr>
-{% if object.image %}
-    <img src="{{ object.image.url }}" alt="error while displaying an image.">
-{% endif %}
-
-<p> Description: {{ object.description }} </p>
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+        
+            <h2>{{ object.title }} </h2>
+            <p> {{ object.timestamp|timesince }} age </p>
+            <hr>
+            {% if object.image %}
+            <img src="{{ object.image.url }}" alt="error while displaying an image.">
+            {% endif %}
+           
+<p> <h3>{{ "Description"|title }} </h3> {{ object.description | linebreaks }} </p>
+</div>
+</div>
+</div>
+{% endblock %}
 
  
