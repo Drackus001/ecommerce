@@ -1,0 +1,21 @@
+{{ object_list }}
+
+<!--  Class all objects
+{'paginator': None,
+'page_obj': None, 
+'is_paginated': False, 
+'object_list': <QuerySet [<Product: T-shirt>, <Product: Hat>]>,
+'product_list': <QuerySet [<Product: T-shirt>, <Product: Hat>]>,
+'view': <products.views.ProductListView object at 0x7f5ca776df60>} -->
+
+
+
+{% for obj in object_list %}
+<p> {{ obj.title }} : description= {{ obj.description }} </p>
+{% endfor %}
+
+<!-- class objects -->
+<!-- <p> {{ paginator }} </p>
+<p> {{ is_paginated }} </p>
+<p> {{ object_list }} </p>
+<p> {{ view }} </p> -->
