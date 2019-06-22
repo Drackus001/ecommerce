@@ -17,7 +17,7 @@ class SearchProductView(ListView):
     def get_queryset(self, *args, **kwargs):
         request = self.request
         method_dict = request.GET
-        print(method_dict)
+        print(method_dict) 
         query = method_dict.get('q', None) #shirt is default # method_dict['q'] will raise error if q is not set (so that's why use get())
         print(method_dict)
         if query is not None:
