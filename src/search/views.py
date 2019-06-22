@@ -21,9 +21,9 @@ class SearchProductView(ListView):
         query = method_dict.get('q', None) #shirt is default # method_dict['q'] will raise error if q is not set (so that's why use get())
         print(method_dict)
         if query is not None:
-             return Product.objects.filter(title__icontains=query)
+            return Product.objects.search(query)
 
-        return Product.objects.featured()
+        return Product.objects.all()
 
         '''
         __iconatins = field contains this
