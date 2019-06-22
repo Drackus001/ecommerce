@@ -18,6 +18,9 @@ from django.conf.urls.static import static
 
 from django.contrib import admin
 from django.urls import path, include
+
+#from . import 
+
 from . import views
 # from products.views import (
 #         ProductListView, 
@@ -42,9 +45,11 @@ urlpatterns = [
     path('about/', views.about_page, name='about'),
     path('contact/', views.contact_page, name='contact'),
     path('login/', views.login_page, name='login'),
+    
     path('register/', views.register_page, name='register'),
     path('products/', include(('products.urls', 'products'), namespace='products')),
     path('search/', include(('search.urls', 'search'), namespace='search')),
+    path('carts/', include(('carts.urls', 'cart'), namespace='cart')),
 
     # path('featured/', ProductFeaturedListView.as_view()),
     # path('featured/<int:pk>/', ProductFeaturedDetailView.as_view()),
