@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, get_user_model
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.contrib.auth import logout
 from .forms import ContactForm, LoginForm, RegisterForm
 
 def home_page(request):
@@ -37,6 +38,9 @@ def contact_page(request):
     #   print(request.POST.get('content'))
     return render(request, 'contact/view.html', context=context)
 
+def logout_view(request):
+    logout(request)
+    return render(request, 'home_page.html', context=None)
 
 def login_page(request):
       login_form = LoginForm(request.POST or None)
@@ -54,7 +58,7 @@ def login_page(request):
                       login(request,user)
                       print('user login')
                       print(login_form.cleaned_data)  
-                      return redirect('/login')
+                      return redirect('/')
               
                   else:
                       print('User Account is disabled')

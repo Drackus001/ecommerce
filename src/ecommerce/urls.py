@@ -38,6 +38,7 @@ from .views import (
         about_page, 
         contact_page, 
         login_page, 
+        logout_view,
         register_page)
 
 urlpatterns = [
@@ -45,6 +46,7 @@ urlpatterns = [
     path('about/', views.about_page, name='about'),
     path('contact/', views.contact_page, name='contact'),
     path('login/', views.login_page, name='login'),
+    path('logout/', views.logout_view, name='logout'),
     
     path('register/', views.register_page, name='register'),
     path('products/', include(('products.urls', 'products'), namespace='products')),
