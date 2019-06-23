@@ -49,7 +49,7 @@ urlpatterns = [
     path('register/', views.register_page, name='register'),
     path('products/', include(('products.urls', 'products'), namespace='products')),
     path('search/', include(('search.urls', 'search'), namespace='search')),
-    path('carts/', cart_home, name='cart'),
+    path('cart/', cart_home, name='cart'),
 
     # path('featured/', ProductFeaturedListView.as_view()),
     # path('featured/<int:pk>/', ProductFeaturedDetailView.as_view()),
