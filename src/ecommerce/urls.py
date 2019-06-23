@@ -31,7 +31,7 @@ from . import views
 #         ProductFeaturedDetailView,
 #         ProductDetailSlugView)
 
-
+from carts.views import cart_home
 
 from .views import (
         home_page, 
@@ -49,7 +49,7 @@ urlpatterns = [
     path('register/', views.register_page, name='register'),
     path('products/', include(('products.urls', 'products'), namespace='products')),
     path('search/', include(('search.urls', 'search'), namespace='search')),
-    path('carts/', include(('carts.urls', 'cart'), namespace='cart')),
+    path('carts/', cart_home, name='cart'),
 
     # path('featured/', ProductFeaturedListView.as_view()),
     # path('featured/<int:pk>/', ProductFeaturedDetailView.as_view()),

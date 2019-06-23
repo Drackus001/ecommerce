@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 from .forms import ContactForm, LoginForm, RegisterForm
 
 def home_page(request):
+    # getting session 
+    #print(request.session.get("myname",'unknown'))
+    print(request.session.get('cart_id'))
     context = {
         'title' : 'Home',
         'content' : 'Welcome to Home Page'
