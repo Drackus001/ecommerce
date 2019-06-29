@@ -1,5 +1,48 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% block content%}
+<div class="container">
+<h1>Cart</h1>
+{% if cart.products.exists %}
 
-{% block content %}
-<h1>This is cart module</h1>
+            <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Product Price</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for product in cart.products.all %}
+            <!-- {{ cart.products.all }}
+            {{ product }} -->
+
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>  <a href="{{product.get_absolute_url}}">{{product.title}}-{{ product.id }}</a> 
+              {% include 'products/update_cart.html' with cart=cart product=object in_cart=True %}
+              </td>
+              <td>{{product.price}}</td>
+
+            </tr>
+            {% endfor %}
+            
+            <tr>
+                <td colspan="2"></td>
+  
+                <td><b>Subtotal:</b>{{ cart.subtotal }}</td>
+              </tr>
+            <tr>
+              <td colspan="2"></td>
+
+              <td><b>Total:</b>{{cart.total}}</td>
+            </tr>
+
+          </tbody>
+        </table>
+{% else %}
+    <div class="lead"> Cart is empty</div>
+{% endif %}
+</div>
 {% endblock %}

@@ -2,6 +2,7 @@ from django.http import Http404
 from django.views.generic import ListView,DetailView
 from django.shortcuts import render, get_object_or_404
 
+from carts.models import Cart
 from .models import Product
 
 # Create your views here.
@@ -46,7 +47,18 @@ def product_list_view(request): # function based listview
 
 class ProductDetailSlugView(DetailView):
     queryset = Product.objects.all()
+    
     template_name = "products/detail.html"
+    
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProductDetailSlugView, self).get_context_data(*args, **kwargs)
+        cart_obj, new_obj = Cart.objects.new_or_get(self.request)
+        context['çart'] = cart_obj
+        #print(context['çart'].products.all())
+        #print(cart_obj.products.values_list(, flat=True))
+
+        return context
 
     def get_object(self, *args, **kwargs):
         request = self.request
@@ -115,8 +127,10 @@ def product_detail_view(request, pk=None, *args, **kwargs):
     if instance is None:
         raise Http404("Product not found!")
 #****
+    cart_obj, new_obj = Cart.objects.new_or_get(self.request)
 
     context = {
-        'object':instance
+        'object':instance,
+        
     }
     return render(request, "products/detail.html", context=context)

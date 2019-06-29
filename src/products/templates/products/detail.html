@@ -2,18 +2,23 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col-12 col-md-6">
         
-            <h2>{{ object.title }} </h2>
-            <p> {{ object.timestamp|timesince }} age </p>
+            <h2>{{ object.title }} - {{ object.id }} </h2>
+            <p>added: {{ object.timestamp|timesince }} ago... </p>
             <hr>
             {% if object.image %}
             <img src="{{ object.image.url }}" alt="error while displaying an image.">
             {% endif %}
-           
-<p> <h3>{{ "Description"|title }} </h3> {{ object.description | linebreaks }} </p>
-</div>
-</div>
+            <p> 
+                <h3>{{ "Description"|title }} </h3>
+                {{ object.description | linebreaks }} 
+            </p>
+        </div>
+        <div class="col-12 col-md-6">
+            {% include 'products/update_cart.html' with cart=cart product=object %}
+        </div>
+    </div>
 </div>
 {% endblock %}
 
