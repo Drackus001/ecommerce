@@ -6,14 +6,16 @@
 {% url 'about' as about_url %}
 {% url 'logout' as logout_url %}
 {% url 'products:list' as products_url %}
+{% url 'cart:home' as cart_url %}
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="{{ home_url }}">Brand_Name</a>  
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="{{ home_url }}">Brand_Name</a>
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item {% if request.path == home_url %} active{% endif %}">
           <a class="nav-link" href="{{ home_url }}">Home <span class="sr-only">(current)</span></a>
         </li>
@@ -26,10 +28,16 @@
           <li class="nav-item {% if request.path == contact_url %} active{% endif %}">
               <a class="nav-link" href="{{ contact_url }}">Contact</a>
             </li>
-            {% if request.user.is_active %} 
-          <li class="nav-item ">
+          {% if request.user.is_active %} 
+          <li class="nav-item {% if request.path == cart_url %} active{% endif %}">
+                <a class="nav-link" href="{{ cart_url }}"> {{ request.session.cart_items }} <i class="fas fa-shopping-cart"></i></a>
+                
+              </li>
+
+            <li class="nav-item ">
             <a class="nav-link" href="{{ logout_url }}">Logout</a>
           </li>
+          
           </ul>
           {% else %}
           </ul>

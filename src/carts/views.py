@@ -21,7 +21,7 @@ def cart_update(request):
 #   print(Product.objects.get(id=1))
     if product_id is not None:
         try:
-            product_obj = Product.objects.get(id=int(product_id))
+            product_obj = Product.objects.get(id=product_id)
         except Product.DoesNotExist:
             print("show message to user ,Product is gone")
             return redirect("cart:home")
@@ -35,6 +35,7 @@ def cart_update(request):
             cart_obj.products.remove(product_obj)    
         else:    
             cart_obj.products.add(product_obj)
+    request.session['cart_items'] = cart_obj.products.count()
             
 #    return redirect(product_obj.get_absolute_url())
     return redirect("cart:home")

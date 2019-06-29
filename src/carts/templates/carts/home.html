@@ -21,7 +21,7 @@
             <tr>
               <th scope="row">{{forloop.counter}}</th>
               <td>  <a href="{{product.get_absolute_url}}">{{product.title}}-{{ product.id }}</a> 
-              {% include 'products/update_cart.html' with cart=cart product=object in_cart=True %}
+              {% include 'products/update_cart.html' with cart=cart product=product in_cart=True %}
               </td>
               <td>{{product.price}}</td>
 
